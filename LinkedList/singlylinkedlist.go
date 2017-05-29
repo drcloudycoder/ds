@@ -39,9 +39,26 @@ func (list *List) Head() *Node {
 
 /*
   Append an element to the end of list
+  Time Complexity: O(n)
 */
 func (list *List) AppendToEnd(data int) {
+  // 1. Create a new Node
+  newNode := &Node{data: data, next: nil}
 
+  // 2a. If list contains no elements, set new node as head of list
+  // 2b. If list contains any element, traverse till last and append new node
+  if list.size == 0 {
+    list.head = newNode
+  } else if list.size > 0 {
+    current := list.head
+    for current.next != nil {
+      current = current.next
+    }
+    current.next = newNode
+  }
+
+  // 3. Increment the list size
+  list.size++
 }
 
 /*
