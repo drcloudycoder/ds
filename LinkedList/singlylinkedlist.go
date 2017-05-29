@@ -63,9 +63,20 @@ func (list *List) AppendToEnd(data int) {
 
 /*
   Prepend an element to the beginning of the list
+  Time Complexity: O(1)
 */
 func (list *List) PrependToBeginning(data int) {
+  // 1. Create a new node
+  newNode := &Node{data: data, next: nil}
 
+  // 2. Point the new node's next to current head
+  newNode.next = list.Head()
+
+  // 3. Update the list's head as the new node
+  list.head = newNode
+
+  // 4. Increment the list size
+  list.size++
 }
 
 /*
