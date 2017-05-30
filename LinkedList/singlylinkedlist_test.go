@@ -82,3 +82,19 @@ func TestDeleteFromBeginning(t *testing.T) {
     current = current.next
   }
 }
+
+func TestDeleteElement(t *testing.T) {
+  list := New()
+  fmt.Println("Size - ", list.Size())
+  list.AppendToEnd(5)
+  list.AppendToEnd(6)
+  list.AppendToEnd(7)
+  list.AppendToEnd(8)
+  list.DeleteElement(7)
+  fmt.Println("Size - ", list.Size())
+  current := list.Head()
+  for current != nil {
+    fmt.Println("Element: ", current.data)
+    current = current.next
+  }
+}
