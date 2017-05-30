@@ -166,9 +166,40 @@ func (list *List) DeleteFromBeginning() {
 
 /*
   Delete a specific element from the list
+  Time Complexity: O(n)
 */
 func (list *List) DeleteElement(data int) {
+  // 1. Provide message to user if the list is empty and return
+  if list.Size() == 0 {
+    fmt.Println("Nothing to delete, the list is empty")
+    return
+  }
 
+  // 2. Get the current head of the list
+  current := list.Head()
+
+  // 3. Update the head if current head is the requested element and return
+  if current.data == data {
+    list.head = current.next
+    current.next = nil
+    list.size--
+    return
+  }
+
+  // 4. Traverse the list, remove the requested element and return
+  for current.next != nil {
+      if current.next.data == data {
+        tmp := current.next.next
+        current.next.next = nil
+        current.next = tmp
+        list.size--
+        return
+      }
+      current = current.next
+  }
+
+  // 5. Provide a message to user if the requested element is not found in list
+  fmt.Println("Could not delete since the element requested does not exist in list")
 }
 
 /*
