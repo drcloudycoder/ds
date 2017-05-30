@@ -142,9 +142,26 @@ func (list *List) DeleteFromEnd() {
 
 /*
   Delete an element from beginning of the list
+  Time Complexity: O(1)
 */
 func (list *List) DeleteFromBeginning() {
+  // 1. Provide message to user if the list is empty and return
+  if list.Size() == 0 {
+    fmt.Println("Nothing to delete, the list is empty")
+    return
+  }
 
+  // 2. Get the current head and save it in temp
+  oldHead := list.Head()
+
+  // 3. Update the list's head to next element in list
+  list.head = oldHead.next
+
+  // 4. Remove the link from the old head
+  oldHead.next = nil
+
+  // 5. Decrement the list size
+  list.size--
 }
 
 /*
