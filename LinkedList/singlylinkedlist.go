@@ -115,8 +115,28 @@ func (list *List) InsertAfter(data int, reference int) {
 
 /*
   Delete an element from the end of the list
+  Time Complexity: O(n)
 */
 func (list *List) DeleteFromEnd() {
+  // 1. Provide message to user if the list is empty and return
+  if list.Size() == 0 {
+    fmt.Println("Nothing to delete, the list is empty")
+    return
+  }
+
+  // 2. Get the head of the list as current iterator
+  current := list.Head()
+
+  // 3. Traverse the list until the second last element is reached
+  for current.next.next != nil {
+    current = current.next
+  }
+
+  // 4. Update next pointer of second last element such that last element is removed
+  current.next = nil
+
+  // 5. Decrement the list size
+  list.size--
 
 }
 
