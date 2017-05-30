@@ -4,6 +4,7 @@ import (
   "fmt"
 )
 
+
 // Represents structure of single item of list
 type Node struct {
   data int
@@ -80,10 +81,36 @@ func (list *List) PrependToBeginning(data int) {
 }
 
 /*
-  Insert an element at specific position in the list
+  Insert an element after a specific element in the list
 */
-func (list *List) InsertAt(data int, position int) {
+func (list *List) InsertAfter(data int, reference int) {
+  // 1. Create a new node
+  newNode := &Node{data: data, next: nil}
 
+  // 2. Add node to list if the list is empty and return
+  if list.Size() == 0 {
+      list.head = newNode
+      list.size++
+      return
+  }
+
+  // 3. Get the head of the list as current iterator
+  current := list.Head()
+
+  // 4a. Traverse the list to find reference node
+  // 4b. If reference node is found, insert the new node and return
+  for current != nil {
+    if current.data == reference {
+      newNode.next = current.next
+      current.next = newNode
+      list.size++
+      return
+    }
+    current = current.next
+  }
+
+  // 5. Provide message to user if the reference node was not found
+  fmt.Println("Could not insert the node as did not find the given reference node")
 }
 
 /*
