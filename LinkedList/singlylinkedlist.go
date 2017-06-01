@@ -203,8 +203,26 @@ func (list *List) DeleteElement(data int) {
 }
 
 /*
-  Find an element
+  Find position of an element
+  Time Complexity: O(n)
 */
-func (list *List) FindPositionofElement(data int) {
+func (list *List) FindPositionofElement(data int) int {
+  // 1. Get the current head of list
+  current := list.Head()
+
+  // 2. Set position integer to 1
+  position := 1
+
+  // 3. Loop over the list until requested element is found and keep track of position
+  for current != nil {
+    if current.data == data {
+      return position
+    }
+    current = current.next
+    position++
+  }
+
+  // 4. Return -1 if the requested element is not found
+  return -1
 
 }
