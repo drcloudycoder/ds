@@ -98,3 +98,13 @@ func TestDeleteElement(t *testing.T) {
     current = current.next
   }
 }
+
+func TestFindPositionofElement(t *testing.T) {
+  list := New()
+  list.AppendToEnd(5)
+  list.AppendToEnd(6)
+  list.AppendToEnd(7)
+  list.AppendToEnd(8)
+  fmt.Println("Position - ", list.FindPositionofElement(8))
+
+}
