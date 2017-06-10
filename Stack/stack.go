@@ -20,6 +20,10 @@ func IsEmpty() bool {
 }
 
 func Peek() int {
+	if top == nil {
+		fmt.Println("There is nothing at top. Stack is empty.")
+		return -1
+	}
 	return top.data
 }
 
