@@ -16,6 +16,9 @@ func IsEmpty() bool {
 	return head == nil
 }
 
+/*
+  Peek() function returns the front/head value of the Queue
+*/
 func Peek() int {
 	if head == nil {
 		fmt.Println("Queue is empty.")
@@ -24,6 +27,10 @@ func Peek() int {
 	return head.data
 }
 
+/*
+  Enqueue() adds a new node at the end/tail of the Queue
+  Time Complexity: O(1)
+*/
 func Enqueue(data int) {
 	new := &Node{data: data}
 	if tail != nil {
@@ -36,6 +43,10 @@ func Enqueue(data int) {
 	}
 }
 
+/*
+  Dequeue() removes the front/head node of the Queue
+  Time Complexity: O(1)
+*/
 func Dequeue() int {
 	if head == nil {
 		fmt.Println("Queue is empty.")
